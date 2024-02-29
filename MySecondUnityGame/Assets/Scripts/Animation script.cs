@@ -8,20 +8,21 @@ public class Animationscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vector
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G)) 
+
+
+
+        if (Input.GetKeyDown("g"))
         {
             Debug.Log("pressed");
-            animator.SetBool(, true);
+            animator.SetTrigger("Gather");
         }
-        else
-        {
-            animator.SetBool(yoink, false);
-        }
+      
     }
 }
