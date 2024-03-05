@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Yoink : MonoBehaviour
 {
-    [SerializeField]private GameObject Flower;
+    [SerializeField]private GameObject Door1;
+    public int Flower_Count = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Flower = GetComponent<GameObject>();
+
     }
 
     // Update is called once per frame
@@ -24,8 +25,18 @@ public class Yoink : MonoBehaviour
             if (other.tag == "Flower")
             {
                 Destroy(other.gameObject,1f);
+                Flower_Count ++;
             }
 
         }
+        if (Input.GetKeyDown("t") && Flower_Count >= 2)
+        {
+           if (other.tag == "Shop")
+            {
+                Debug.Log("toets");
+                Destroy(Door1, 1f);
+            }
+        }
     }
+
 }

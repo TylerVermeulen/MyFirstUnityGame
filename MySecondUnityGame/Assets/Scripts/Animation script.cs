@@ -38,7 +38,6 @@ public class Animationscript : MonoBehaviour
             animator.SetTrigger("Idle");
         }
 
- 
     }
     private void resetAllTrigger() {
         animator.ResetTrigger("Gather");
