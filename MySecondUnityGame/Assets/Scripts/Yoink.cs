@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Yoink : MonoBehaviour
 {
-    [SerializeField]private GameObject Door1;
+    [SerializeField]private GameObject Gate1;
     public int Flower_Count = 0;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Yoink : MonoBehaviour
     {
        
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (Input.GetKeyDown("g"))
@@ -34,7 +34,7 @@ public class Yoink : MonoBehaviour
            if (other.tag == "Shop")
             {
                 Debug.Log("toets");
-                Destroy(Door1, 1f);
+                Destroy(Gate1);
             }
         }
     }
