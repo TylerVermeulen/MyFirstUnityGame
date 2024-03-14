@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Movement_Controller : MonoBehaviour
 {
-    [SerializeField]private float speed = 3f;
-    [SerializeField]private float rotationspeed = 10000f;
+    public float speed = 50f;
+    public float standardspeed = 50f;
+    public float rotationspeed = 10000f;
     [SerializeField]private Animator animator;
-
+    private float vertical;
+    private float horizontal;
     private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,30 +21,27 @@ public class Movement_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 positionUpdate = transform.position + Input.GetAxis("Vertical") * transform.forward * speed * Time.deltaTime;
-        transform.position = positionUpdate;
-        transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * rotationspeed * Time.deltaTime, 0));
+        //Vector3 positionUpdate = transform.position + Input.GetAxis("Vertical") * transform.forward * speed * Time.deltaTime;
+        // transform.position = positionUpdate;
+        // transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * rotationspeed * Time.deltaTime, 0));
+        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
 
+        rb.AddForce(transform.forward * vertical * speed * Time.deltaTime);
+        transform.Rotate((transform.up * horizontal) * rotationspeed * Time.deltaTime);
 
+        /*
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Gathering"))
         {
             speed = 0f;
         }
         else
         {
-            speed = 3f;
-        }
-        //float horizontal = Input.GetAxis("Horizontal") * rotationspeed;
-        // float vertical = Input.GetAxis("Vertical") * speed;
+            speed = standardspeed;
+        }*/
+    }
+    private void FixedUpdate()
+    {
 
-        // horizontal *= Time.deltaTime;
-        // vertical *= Time.deltaTime;
-
-        // transform.Translate(0, 0, vertical);
-        //  transform.Rotate(0, horizontal, 0);
-        //if ()
-        {
-       
-        }
     }
 }

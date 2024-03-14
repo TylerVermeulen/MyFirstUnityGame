@@ -8,6 +8,8 @@ TagManager:
   - Shop
   - floor
   - Door1
+  - flower2
+  - door2
   layers:
   - Default
   - TransparentFX
