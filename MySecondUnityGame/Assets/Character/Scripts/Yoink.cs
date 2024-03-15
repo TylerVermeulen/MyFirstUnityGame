@@ -28,6 +28,7 @@ public class Yoink : MonoBehaviour
         {
             if (other.tag == "Flower")
             {
+                Debug.Log("flower");
                 Destroy(other.gameObject, 1f);
                 Flower_Count++;
             }
