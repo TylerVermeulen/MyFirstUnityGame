@@ -1,6 +1,7 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Movement_Controller : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Movement_Controller : MonoBehaviour
     [SerializeField]private Animator animator;
     private float vertical;
     private float horizontal;
+    private float rotate;
     private Rigidbody rb;
 
     // Start is called before the first frame update
@@ -26,11 +28,17 @@ public class Movement_Controller : MonoBehaviour
         // transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * rotationspeed * Time.deltaTime, 0));
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
+        rotate = Input.GetAxis("Rotate");
 
-        rb.AddForce(transform.forward * vertical * speed * Time.deltaTime);
-        transform.Rotate((transform.up * horizontal) * rotationspeed * Time.deltaTime);
+        Vector3 movement = new Vector3(0.0f, 0.0f, vertical).normalized * speed;
+        // Calculate the new position of the object
+        Vector3 newPosition = rb.position + movement * Time.fixedDeltaTime;
+        // Use Vector3.Lerp for a smooth transition to the new position
+        rb.MovePosition(Vector3.Lerp(rb.position, newPosition, 0.5f)); 
+        transform.Rotate((transform.up * rotate) * rotationspeed * Time.deltaTime);
 
-        /*
+        
+        
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Gathering"))
         {
             speed = 0f;
@@ -38,10 +46,11 @@ public class Movement_Controller : MonoBehaviour
         else
         {
             speed = standardspeed;
-        }*/
+        }
     }
     private void FixedUpdate()
     {
 
     }
 }
+*/
