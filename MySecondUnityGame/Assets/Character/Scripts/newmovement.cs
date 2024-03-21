@@ -9,7 +9,6 @@ public class Movement_Controller : MonoBehaviour
     private float speed = 5f;
     public float standardspeed = 5f;
     public float rotationSpeed = 5f;
-    private float smoothingFactor = 0.5f;
 
     [SerializeField] private Animator animator;
     private float vertical;
