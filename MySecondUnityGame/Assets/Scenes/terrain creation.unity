@@ -2111,22 +2111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 541683513}
---- !u!114 &541683510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541683505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cea825b318aca04fa6c349d53e35cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 500
-  standardspeed: 500
-  rotationspeed: 100
-  animator: {fileID: 541683513}
 --- !u!114 &541683511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,6 +2135,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2195016239474110126, guid: 435d261c1fe73ba46883b819e578219d, type: 3}
   m_PrefabInstance: {fileID: 1667169582}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &541683515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541683505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15d9d00f8aece9489afdb5dc0890ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardspeed: 5
+  rotationSpeed: 5
+  animator: {fileID: 541683513}
 --- !u!1001 &554855049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3693,20 +3692,7 @@ Transform:
   m_LocalPosition: {x: 0.2, y: -0.7192459, z: -152.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1541108121}
-  - {fileID: 38330779}
-  - {fileID: 1473797417}
-  - {fileID: 255017011}
-  - {fileID: 257610258}
-  - {fileID: 282637227}
-  - {fileID: 361342788}
-  - {fileID: 1203304995}
-  - {fileID: 1131122399}
-  - {fileID: 566530587}
-  - {fileID: 1137845809}
-  - {fileID: 1938746155}
-  - {fileID: 1654660522}
+  m_Children: []
   m_Father: {fileID: 1647315097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1325176835
@@ -4681,10 +4667,10 @@ PrefabInstance:
       addedObject: {fileID: 541683511}
     - targetCorrespondingSourceObject: {fileID: 1530541142161044500, guid: 435d261c1fe73ba46883b819e578219d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 541683510}
+      addedObject: {fileID: 541683509}
     - targetCorrespondingSourceObject: {fileID: 1530541142161044500, guid: 435d261c1fe73ba46883b819e578219d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 541683509}
+      addedObject: {fileID: 541683515}
     - targetCorrespondingSourceObject: {fileID: 1530541142161044500, guid: 435d261c1fe73ba46883b819e578219d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 541683508}
@@ -5378,20 +5364,7 @@ Transform:
   m_LocalPosition: {x: 11.2, y: -0.7192459, z: -4.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1437375694}
-  - {fileID: 1895673048}
-  - {fileID: 2033198022}
-  - {fileID: 1672014034}
-  - {fileID: 275161696}
-  - {fileID: 862409825}
-  - {fileID: 1160508725}
-  - {fileID: 1699925496}
-  - {fileID: 368499330}
-  - {fileID: 2049016675}
-  - {fileID: 707874053}
-  - {fileID: 882416026}
-  - {fileID: 504243914}
+  m_Children: []
   m_Father: {fileID: 1647315097}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1917308410
@@ -6705,3 +6678,10 @@ SceneRoots:
   - {fileID: 437829453}
   - {fileID: 378193636}
   - {fileID: 1896538782}
+  - {fileID: 7272927032901111353}
+  - {fileID: 218930634}
+  - {fileID: 96867075}
+  - {fileID: 511451208}
+  - {fileID: 1647315097}
+  - {fileID: 1992959334}
+  - {fileID: 2134977730}
