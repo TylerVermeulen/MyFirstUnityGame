@@ -10,6 +10,10 @@ TagManager:
   - Door1
   - flower2
   - door2
+  - Flower3
+  - Flower4
+  - Flower5
+  - player
   layers:
   - Default
   - TransparentFX

@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 983517758978850057}
   - component: {fileID: 1136364614495577972}
   - component: {fileID: 2454034251105376987}
-  - component: {fileID: 2110035201786753932}
   - component: {fileID: 8905633669738526408}
   m_Layer: 0
   m_Name: PP_Sunflower_04
-  m_TagString: Untagged
+  m_TagString: Flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6508105743044049438}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1243, y: 2.1243, z: 2.1243}
+  m_LocalRotation: {x: -0, y: 0.7754087, z: -0, w: 0.63145983}
+  m_LocalPosition: {x: 0.44, y: 0, z: -9.88}
+  m_LocalScale: {x: 1.9474998, y: 1.9475, z: 1.9474998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.401, z: 0}
 --- !u!33 &1136364614495577972
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -85,28 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2110035201786753932
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508105743044049438}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6364478861242937035, guid: 5374e258aa8b0a54b9ad017e47f849ec, type: 3}
 --- !u!65 &8905633669738526408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,9 +99,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5808398, y: 0.4477014, z: 0.56440276}
-  m_Center: {x: -0.02871312, y: 0.2238507, z: 0.048281185}
+  m_Size: {x: 0.56742305, y: 0.47715387, z: 0.5363714}
+  m_Center: {x: -0.0065609748, y: 0.23857693, z: 0.044687275}

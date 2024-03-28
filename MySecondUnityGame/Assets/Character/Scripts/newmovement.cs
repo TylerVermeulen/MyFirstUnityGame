@@ -39,29 +39,10 @@ public class Movement_Controller : MonoBehaviour
         Vector3 move = new Vector3(horizontal, 0f, vertical).normalized * speed;
         rb.MovePosition(rb.position + transform.TransformDirection(move) * Time.deltaTime);
 
-        //// Calculate movement based on input
-        //Vector3 movement = new Vector3(horizontal, 0.0f, vertical).normalized * speed;
 
-        //// Calculate the new position of the object
-        //Vector3 newPosition = rb.position + movement * Time.fixedDeltaTime;
-
-        //// Calculate the rotation amount based on horizontal input
-        //Quaternion rotation = Quaternion.Euler(0.0f, rotate * rotationSpeed * Time.deltaTime, 0.0f);
-
-        //// Rotate the forward direction of the object
-        //Vector3 rotatedForward = rotation * transform.forward;
-
-        //// Only move if there is input
-        //if (movement.magnitude > 0)
-        //{
-        //    // Calculate the new position of the object
-        //    newPosition += rotatedForward * Time.fixedDeltaTime;
-        //}
 
         Quaternion deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * rotate * Time.deltaTime);
-        // Use MovePosition for a smooth transition to the new position
-        //rb.MovePosition(Vector3.Lerp(rb.position, transform.TransformDirection(newPosition), 0.5f));
-        //transform.Translate(newPosition);
+
         rb.MoveRotation(rb.rotation * deltaRotation);
 
         

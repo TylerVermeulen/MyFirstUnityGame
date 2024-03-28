@@ -28,18 +28,19 @@ public class Yoink : MonoBehaviour
         {
             if (other.tag == "Flower")
             {
-                Debug.Log("flower");
+                
                 Destroy(other.gameObject, 1f);
                 Flower_Count++;
             }
 
         }
-        if (Input.GetKeyDown("t") && Flower_Count >= 2)
+        if (Input.GetKeyDown("t") && Flower_Count >= 14)
         {
             if (other.tag == "Shop")
             {
-                Debug.Log("toets");
+                
                 Destroy(Gate1);
+                Flower_Count = Flower_Count - 14;
             }
         }
 
