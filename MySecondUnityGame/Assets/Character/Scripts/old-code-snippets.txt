@@ -1,0 +1,76 @@
+Debug.Log("ljbhasbhuladshdgyuadfbhuvihpvihpbihpsg");
+for (int i = 0; i < path.Length; i++)
+			{
+				Debug.Log($"path {i}");
+				//Debug.log90
+				// begin north
+				if (item.transform.position.x == (path[i].transform.position.x + diameter) && item.transform.position.z == path[i].transform.position.z)
+				{
+					door.transform.position = new Vector3(item.transform.position.x + diameter / 2, item.transform.position.y, item.transform.position.z);
+					door.transform.rotation = Quaternion.Euler(0, 0, 0);
+					listOfDoorsToInstantiate[doorIndex] = door;
+					doorIndex++;
+				}
+				else
+				{
+					noDoor.transform.position = new Vector3(item.transform.position.x + diameter / 2, item.transform.position.y, item.transform.position.z);
+					noDoor.transform.rotation = Quaternion.Euler(0, 0, 0);
+					listOfDoorsToInstantiate[doorIndex] = noDoor;
+					doorIndex++;
+				}
+				// end north
+		
+		
+				// begin south
+				if (item.transform.position.x == (path[i].transform.position.x - diameter) && item.transform.position.z == path[i].transform.position.z)
+				{
+					door.transform.position = new Vector3(item.transform.position.x - diameter / 2, item.transform.position.y, item.transform.position.z);
+					door.transform.rotation = Quaternion.Euler(0, 180, 0);
+					listOfDoorsToInstantiate[doorIndex] = door;
+					doorIndex++;
+				}
+				else
+				{
+					noDoor.transform.position = new Vector3(item.transform.position.x - diameter / 2, item.transform.position.y, item.transform.position.z);
+					noDoor.transform.rotation = Quaternion.Euler(0, 180, 0);
+					listOfDoorsToInstantiate[doorIndex] = noDoor;
+					doorIndex++;
+				}
+				// end south
+		
+		
+				// begin west
+				if (item.transform.position.x == path[i].transform.position.x && item.transform.position.z == (path[i].transform.position.z + diameter))
+				{
+					door.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z + diameter / 2);
+					door.transform.rotation = Quaternion.Euler(0, 270, 0);
+					listOfDoorsToInstantiate[doorIndex] = door;
+					doorIndex++;
+				}
+				else
+				{
+					noDoor.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z + diameter / 2);
+					noDoor.transform.rotation = Quaternion.Euler(0, 270, 0);
+					listOfDoorsToInstantiate[doorIndex] = noDoor;
+					doorIndex++;
+				}
+				// end west
+		
+		
+				// begin east
+				if (item.transform.position.x == path[i].transform.position.x && item.transform.position.z == (path[i].transform.position.z - diameter))
+				{
+					door.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z - diameter / 2);
+					door.transform.rotation = Quaternion.Euler(0, 90, 0);
+					listOfDoorsToInstantiate[doorIndex] = door;
+					doorIndex++;
+				}
+				else
+				{
+					noDoor.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z - diameter / 2);
+					noDoor.transform.rotation = Quaternion.Euler(0, 90, 0);
+					listOfDoorsToInstantiate[doorIndex] = noDoor;
+					doorIndex++;
+				}
+				// end west
+			}
