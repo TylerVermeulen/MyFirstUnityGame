@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steps: 10
   area: {fileID: 6231548467152231231, guid: 18d36a3ded0dcdb438387e8bcdfc2f0d, type: 3}
-  door: {fileID: 125409143}
+  door: {fileID: 8590767246429758157, guid: 622913f7cc20fcf4a9f447c85021ba17, type: 3}
   noDoor: {fileID: 220988565}
   locationX: 0
   locationZ: 0
