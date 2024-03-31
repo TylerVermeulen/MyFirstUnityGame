@@ -9,6 +9,7 @@ public class DoorModel
 	public Vector3 position;
 	public Quaternion rot;
 	public bool isDoor;
+	public string tag;
 }
 class Room
 {
@@ -33,7 +34,7 @@ public class mapGen : MonoBehaviour
 	[SerializeField] private int steps = 0;
 	[SerializeField] GameObject area, door, noDoor;
 	private GameObject[] path;
-	[SerializeField] private float locationX = 0, locationZ = 0;
+	[SerializeField] private float locationX = 0, locationY = 0, locationZ = 0;
 	[SerializeField] private float boundryToNegativeX = 50, boundryToNegativeZ = 50, boundryToPositiveX = 200, boundryToPositiveZ = 200;
 
 	private float B_NegativeX, B_NegativeZ, B_PositiveX, B_PositiveZ;
@@ -46,12 +47,12 @@ public class mapGen : MonoBehaviour
 		UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
 		path = new GameObject[steps];
 		Debug.Log("what");
-		path[0] = Instantiate(area, new Vector3(locationX, 0.0f, locationZ), Quaternion.identity);
+		path[0] = Instantiate(area, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
 		path = genMap(path);
-		GenDoors(path);
+		GenDoors(path, new string[] { "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1" });
 	}
 
-	private GameObject[] GenDoors(GameObject[] path)
+	private GameObject[] GenDoors(GameObject[] path, string[] tags)
 	{
 		Room[] rooms = new Room[path.Length];
 		for (int i = 0; i < rooms.Length; i++)
@@ -68,7 +69,7 @@ public class mapGen : MonoBehaviour
 				{
 					float dx = rooms[i].roomObject.transform.position.x - item.roomObject.transform.position.x;
 					float dz = rooms[i].roomObject.transform.position.z - item.roomObject.transform.position.z;
-					if (dx == diameter && System.Math.Abs (dz) < 0.1f)
+					if (dx == diameter && System.Math.Abs(dz) < 0.1f)
 					{
 						item.doorEast = true;
 					}
@@ -80,7 +81,7 @@ public class mapGen : MonoBehaviour
 					{
 						item.doorSouth = true;
 					}
-					if (dz == -diameter && System.Math.Abs(dx )< 0.1f)
+					if (dz == -diameter && System.Math.Abs(dx) < 0.1f)
 					{
 						item.doorNorth = true;
 					}
@@ -96,11 +97,12 @@ public class mapGen : MonoBehaviour
 				new DoorModel()
 				{
 
-					isDoor =rooms[i].doorNorth,
-					position=	new Vector3(rooms[i].roomObject.transform.position.x , rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z - diameter / 2),
-					rot=	Quaternion.Euler(0, 90, 0)
+					isDoor = rooms[i].doorNorth,
+					position = new Vector3(rooms[i].roomObject.transform.position.x, rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z - diameter / 2),
+					rot = Quaternion.Euler(0, 90, 0),
+					tag = tags[i]
 				}
-			);		
+			);
 			//end north
 
 			//begin south
@@ -109,14 +111,15 @@ public class mapGen : MonoBehaviour
 				{
 
 					isDoor = rooms[i].doorSouth,
-					position = new Vector3(rooms[i].roomObject.transform.position.x , rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z + diameter / 2),
-					rot = Quaternion.Euler(0, 270, 0)
+					position = new Vector3(rooms[i].roomObject.transform.position.x, rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z + diameter / 2),
+					rot = Quaternion.Euler(0, 270, 0),
+					tag = tags[i]
 				}
 			);
 			//end south
 
 			//begin west
-		
+
 
 
 			listOfDoorsToInstantiate.Add(
@@ -125,7 +128,8 @@ public class mapGen : MonoBehaviour
 
 					isDoor = rooms[i].doorWest,
 					position = new Vector3(rooms[i].roomObject.transform.position.x - diameter / 2, rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z),
-					rot = Quaternion.Euler(0, 180, 0)
+					rot = Quaternion.Euler(0, 180, 0),
+					tag = tags[i]
 				}
 			);
 			//end west
@@ -136,8 +140,9 @@ public class mapGen : MonoBehaviour
 				{
 
 					isDoor = rooms[i].doorEast,
-					position = new Vector3(rooms[i].roomObject.transform.position.x + diameter / 2, rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z ),
-					rot = Quaternion.Euler(0, 0, 0)
+					position = new Vector3(rooms[i].roomObject.transform.position.x + diameter / 2, rooms[i].roomObject.transform.position.y, rooms[i].roomObject.transform.position.z),
+					rot = Quaternion.Euler(0, 0, 0),
+					tag = tags[i]
 				}
 			);
 			//end east
@@ -167,16 +172,17 @@ public class mapGen : MonoBehaviour
 		return listOfDoorsToInstantiate.Where(i => i != null)
 			.Select(i => DoorModelToGameObject(i))
 			.ToArray();
-		
+
 
 
 	}
 
 	private GameObject DoorModelToGameObject(DoorModel model)
 	{
-		GameObject obj = 		Instantiate(model.isDoor ? door:noDoor);
+		GameObject obj = Instantiate(model.isDoor ? door : noDoor);
 		obj.transform.position = model.position;
 		obj.transform.rotation = model.rot;
+		obj.tag = model.isDoor ? model.tag : "Untagged";
 		//obj.transform.localScale = new Vector3(3, 3, 3);
 
 		return obj;
@@ -187,7 +193,9 @@ public class mapGen : MonoBehaviour
 	{
 		//Random.seed = 0;
 		Debug.Log(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
 		diameter = (float)(area.transform.localScale.x * 0.95);
+
 		B_NegativeX = path[0].transform.position.x - boundryToNegativeX;
 		B_NegativeZ = path[0].transform.position.z - boundryToNegativeZ;
 		B_PositiveX = path[0].transform.position.x + boundryToPositiveX;
@@ -212,6 +220,7 @@ public class mapGen : MonoBehaviour
 					break;
 			}
 
+			// assumption made that compiler will optimise this string canMake = "case" thing going on here
 			canMake = "true";
 
 			for (int j = i; j >= 0; j--)
@@ -240,7 +249,7 @@ public class mapGen : MonoBehaviour
 			switch (canMake)
 			{
 				case "true":
-					path[i] = Instantiate(area, new Vector3(currentX = locationX, 0.0f, currentZ = locationZ), Quaternion.identity);
+					path[i] = Instantiate(area, new Vector3(currentX = locationX, locationY, currentZ = locationZ), Quaternion.identity);
 					break;
 				case "outBounds":
 					Debug.Log("aaaaaaaa");
