@@ -62,7 +62,7 @@ public class mapGen : MonoBehaviour
 		//Debug.Log(rooms);
 		foreach (Room item in rooms)
 		{
-			// +x north, -x south, +z west, -z east
+			// +x east, -x west, +z south (don't worry about it), -z north (again, don't worry about it) 
 			for (int i = 0; i < rooms.Length; i++)
 			{
 				if (item != rooms[i])//skip self
