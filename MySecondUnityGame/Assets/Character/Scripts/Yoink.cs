@@ -31,6 +31,7 @@ public class Yoink : MonoBehaviour
                 
                 Destroy(other.gameObject, 1f);
                 Flower_Count++;
+                Scoremanager.instance.AddPoint();
             }
 
         }
@@ -41,6 +42,7 @@ public class Yoink : MonoBehaviour
                 
                 Destroy(Gate1);
                 Flower_Count = Flower_Count - 14;
+                Scoremanager.instance.RemovePoint();
             }
         }
 
