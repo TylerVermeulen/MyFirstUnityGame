@@ -45,7 +45,7 @@ public class mapGen : MonoBehaviour
 	string canMake = "true";
 	void Start()
 	{
-		UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+		//UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
 		path = new GameObject[steps];
 		Debug.Log("what");
 		path[0] = Instantiate(beginArea, new Vector3(locationX, locationY, locationZ), Quaternion.identity);

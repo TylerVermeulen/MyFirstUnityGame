@@ -15,6 +15,7 @@ public class skyboxchange : MonoBehaviour
     {
         sun = biglamp.GetComponent<Light>();
         source = GetComponent<AudioSource>();
+        sun.intensity = 1f;
     }
     void OnTriggerEnter(Collider other)
     { 
