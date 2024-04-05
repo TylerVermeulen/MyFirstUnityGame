@@ -514,10 +514,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steps: 10
+  beginArea: {fileID: 6231548467152231231, guid: 18d36a3ded0dcdb438387e8bcdfc2f0d, type: 3}
   area: {fileID: 6231548467152231231, guid: 18d36a3ded0dcdb438387e8bcdfc2f0d, type: 3}
   door: {fileID: 8590767246429758157, guid: 622913f7cc20fcf4a9f447c85021ba17, type: 3}
-  noDoor: {fileID: 220988565}
+  noDoor: {fileID: 7951805732896426916, guid: 95358e89fb9437f4eb2788a8faf6b8fd, type: 3}
   locationX: 0
+  locationY: 0
   locationZ: 0
   boundryToNegativeX: 200
   boundryToNegativeZ: 200

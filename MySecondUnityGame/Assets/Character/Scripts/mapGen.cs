@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ class Room
 public class mapGen : MonoBehaviour
 {
 	[SerializeField] private int steps = 0;
-	[SerializeField] GameObject area, door, noDoor;
+	[SerializeField] GameObject beginArea, area, door, noDoor;
 	private GameObject[] path;
 	[SerializeField] private float locationX = 0, locationY = 0, locationZ = 0;
 	[SerializeField] private float boundryToNegativeX = 50, boundryToNegativeZ = 50, boundryToPositiveX = 200, boundryToPositiveZ = 200;
@@ -47,9 +48,9 @@ public class mapGen : MonoBehaviour
 		UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
 		path = new GameObject[steps];
 		Debug.Log("what");
-		path[0] = Instantiate(area, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
+		path[0] = Instantiate(beginArea, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
 		path = genMap(path);
-		GenDoors(path, new string[] { "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1" });
+		GenDoors(path, new string[] { "Door1", "door2", "door3", "door4", "door5", "door6", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1" });
 	}
 
 	private GameObject[] GenDoors(GameObject[] path, string[] tags)
@@ -162,7 +163,7 @@ public class mapGen : MonoBehaviour
 					{
 
 						Debug.Log("door_1:" + i + listOfDoorsToInstantiate[i].position + ", Door_2:" + j + listOfDoorsToInstantiate[j].position);
-						listOfDoorsToInstantiate[j] = null;
+						listOfDoorsToInstantiate[i] = null;
 					}
 				}
 			}
@@ -191,6 +192,11 @@ public class mapGen : MonoBehaviour
 
 	private GameObject[] genMap(GameObject[] path)
 	{
+
+		for (int i = 0; i < 88; i++)
+		{
+			Debug.Log(Random.Range(0, 4));
+		}
 		//Random.seed = 0;
 		Debug.Log(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
@@ -265,4 +271,3 @@ public class mapGen : MonoBehaviour
 		return path;
 	}
 }
-
