@@ -18,6 +18,7 @@ TagManager:
   - door4
   - door5
   - door6
+  - door7
   layers:
   - Default
   - TransparentFX

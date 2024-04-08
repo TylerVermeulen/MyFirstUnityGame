@@ -5,17 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Yoink : MonoBehaviour
 {
-    [SerializeField] private GameObject Gate1;
     public int Flower_Count = 0;
     [SerializeField] private GameObject tutorialUI;
     [SerializeField] private Animator animator;
+    bool door1exists = true;
     bool istutorialseen = true;
     // Start is called before the first frame update
     void Start()
     {
 
     }
-
+    internal void DeleteByTag(string tag)
+    {
+        GameObject[] doors = GameObject.FindGameObjectsWithTag(tag);
+        for (int i = 0; i < doors.Length; i++)
+        {
+            Destroy(doors[i]);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -52,8 +59,9 @@ public class Yoink : MonoBehaviour
         {
             if (other.tag == "Shop")
             {
-                
-                Destroy(Gate1);
+
+                DeleteByTag("Door1");
+                door1exists = false;
                 Flower_Count = Flower_Count - 14;
                 Scoremanager.instance.RemovePoint();
             }
