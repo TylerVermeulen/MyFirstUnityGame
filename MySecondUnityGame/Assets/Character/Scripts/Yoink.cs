@@ -7,6 +7,9 @@ public class Yoink : MonoBehaviour
 {
     [SerializeField] private GameObject Gate1;
     public int Flower_Count = 0;
+    [SerializeField] private GameObject tutorialUI;
+    [SerializeField] private Animator animator;
+    bool istutorialseen = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +23,21 @@ public class Yoink : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (Input.GetKeyDown("y") && istutorialseen == true)
+        {
+            tutorialUI.SetActive(false);
+            istutorialseen=false;
+        }
+        else if (Input.GetKeyDown("y") && istutorialseen == false)
+        {
+            tutorialUI.SetActive(true);
+            istutorialseen=true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown("g"))
+        if (Input.GetKeyDown("g") && animator.GetCurrentAnimatorStateInfo(0).IsName("Gathering") == false)
         {
             if (other.tag == "Flower")
             {
