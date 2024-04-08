@@ -33,10 +33,11 @@ class Room
 public class mapGen : MonoBehaviour
 {
 	[SerializeField] private int steps = 0;
+	[SerializeField] GameObject[] Environments = new GameObject[34];
 	[SerializeField] GameObject beginArea, area, door, noDoor;
 	private GameObject[] path;
 	[SerializeField] private float locationX = 0, locationY = 0, locationZ = 0;
-	[SerializeField] private float boundryToNegativeX = 50, boundryToNegativeZ = 50, boundryToPositiveX = 200, boundryToPositiveZ = 200;
+	[SerializeField] private float boundryToNegativeX, boundryToNegativeZ, boundryToPositiveX, boundryToPositiveZ;
 
 	private float B_NegativeX, B_NegativeZ, B_PositiveX, B_PositiveZ;
 	float currentX, currentZ;
@@ -51,6 +52,33 @@ public class mapGen : MonoBehaviour
 		path[0] = Instantiate(beginArea, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
 		path = genMap(path);
 		GenDoors(path, new string[] { "Door1", "door2", "door3", "door4", "door5", "door6", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1" });
+		GenEnvironments(RandomizeArray(Environments, new System.Random()), path);
+	}
+
+	private void GenEnvironments(GameObject[] gameObjects, GameObject[] path)
+	{
+		for (int i = 0; i < path.Length; i++)
+		{
+			Instantiate(gameObjects[i], path[i].transform);
+		}
+	}
+
+	
+
+	internal static T[] RandomizeArray<T>(T[] array, System.Random rand)
+	{
+		List<T> options = array.ToList();
+		List<T> result = new List<T>();
+
+		while (options.Count > 0)
+		{
+			int i = rand.Next(options.Count);
+
+			result.Add(options[i]);
+
+			options.RemoveAt(i);
+		}
+		return result.ToArray();
 	}
 
 	private GameObject[] GenDoors(GameObject[] path, string[] tags)
