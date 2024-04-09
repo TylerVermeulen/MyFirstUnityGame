@@ -18,15 +18,18 @@ public class skyboxchange : MonoBehaviour
         sun.intensity = 1f;
     }
     void OnTriggerEnter(Collider other)
-    { 
-        if (other.tag == "player")
+    {
+        Debug.Log("touched");
+        if (other.tag == "Player")
         {
             source.Play();
             if (RenderSettings.skybox != otherSkyBox)
             { 
                 RenderSettings.skybox = otherSkyBox; 
                 sun.intensity = 0.25f;
+
             }
+
         }
 
     }

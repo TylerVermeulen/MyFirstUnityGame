@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class Yoink : MonoBehaviour
 {
     public int Flower_Count = 0;
+    private int doorindex = 0;
     [SerializeField] private GameObject tutorialUI;
     [SerializeField] private Animator animator;
-    bool door1exists = true;
     bool istutorialseen = true;
     // Start is called before the first frame update
     void Start()
@@ -59,9 +59,22 @@ public class Yoink : MonoBehaviour
         {
             if (other.tag == "Shop")
             {
-
-                DeleteByTag("Door1");
-                door1exists = false;
+                switch(doorindex)
+                {
+                    case 0: 
+                        DeleteByTag("Door1")
+                            ; break;
+                    case 1:
+                        DeleteByTag("door2")   
+                            ; break;
+                    case 2:
+                        DeleteByTag("door3")
+                            ; break;
+                    case 3:
+                        DeleteByTag("door4")
+                            ; break;
+                }
+                doorindex++;
                 Flower_Count = Flower_Count - 14;
                 Scoremanager.instance.RemovePoint();
             }

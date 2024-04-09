@@ -34,5 +34,6 @@ public class Scoremanager : MonoBehaviour
     public void RemovePoint()
     {
         Flowercount -= 14;
+        Flowercounttext.text = Flowercount.ToString() + " flowers";
     }
 }
