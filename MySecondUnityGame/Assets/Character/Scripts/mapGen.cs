@@ -49,7 +49,7 @@ public class mapGen : MonoBehaviour
 	string canMake = "true";
 	void Start()
 	{
-		//UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+		UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
 		path = new GameObject[steps];
 		Debug.Log("what");
 		path[0] = Instantiate(beginArea, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
@@ -72,19 +72,19 @@ public class mapGen : MonoBehaviour
 		}
 		if (lastRoom.doorNorth)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 69, 0));
 		}
 		else if (lastRoom.doorSouth)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 250, 0));
 		}
 		else if (lastRoom.doorWest)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, -204.5f, 0));
 		}
 		else if (lastRoom.doorEast)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, -24.5f, 0));
 		
 		}
 		//Instantiate(endE, path[temp].transform);
@@ -247,12 +247,12 @@ public class mapGen : MonoBehaviour
 	private GameObject[] genMap(GameObject[] path)
 	{
 
-		for (int i = 0; i < 88; i++)
+		//for (int i = 0; i < 88; i++)
 		{
 			//Debug.Log(Random.Range(0, 4));
 		}
-		//Random.seed = 0;
-		Debug.Log(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		Random.seed = 1;
+		//Debug.Log(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
 		diameter = (float)(area.transform.localScale.x * 0.95);
 

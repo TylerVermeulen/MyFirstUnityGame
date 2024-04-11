@@ -2244,7 +2244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skybox: {fileID: 2100000, guid: 47cd86021c335854592b2fcf105c3e2c, type: 2}
   otherSkyBox: {fileID: 2100000, guid: 25fd04c0b2420484cab8755e4c426768, type: 2}
-  biglamp: {fileID: 0}
+  biglamp: {fileID: 435796212415587292}
 --- !u!82 &5156963734664627643
 AudioSource:
   m_ObjectHideFlags: 0
