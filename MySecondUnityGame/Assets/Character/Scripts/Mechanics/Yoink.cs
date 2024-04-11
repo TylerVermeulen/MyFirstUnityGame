@@ -73,6 +73,12 @@ public class Yoink : MonoBehaviour
                     case 3:
                         DeleteByTag("door4")
                             ; break;
+                    case 4:
+                        DeleteByTag("door5")
+                            ; break;
+                    case 5:
+                        DeleteByTag("door6")
+                            ; break;
                 }
                 doorindex++;
                 Flower_Count = Flower_Count - 14;
