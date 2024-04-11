@@ -62,26 +62,29 @@ public class mapGen : MonoBehaviour
 	{
 		int temp = 0;
 		Room lastRoom = roomList[roomList.Length - 1];
+
 		for (int i = 0, j = EnvArray.Length; i < j; i++)
 		{
-			Instantiate(EnvArray[i], path[i].transform);
-			temp++;
+			GameObject newEnv = Instantiate(EnvArray[i]);
+			newEnv.transform.position = path[i].transform.position;
+
+            temp++;
 		}
-		if (lastRoom.doorEast)
+		if (lastRoom.doorNorth)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
 		}
 		else if (lastRoom.doorSouth)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
 		}
 		else if (lastRoom.doorWest)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
 		}
 		else if (lastRoom.doorEast)
 		{
-			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(90, 0, 0));
 		
 		}
 		//Instantiate(endE, path[temp].transform);
@@ -246,7 +249,7 @@ public class mapGen : MonoBehaviour
 
 		for (int i = 0; i < 88; i++)
 		{
-			Debug.Log(Random.Range(0, 4));
+			//Debug.Log(Random.Range(0, 4));
 		}
 		//Random.seed = 0;
 		Debug.Log(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
