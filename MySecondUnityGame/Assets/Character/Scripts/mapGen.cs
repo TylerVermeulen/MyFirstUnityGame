@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,11 +33,14 @@ class Room
 public class mapGen : MonoBehaviour
 {
 	[SerializeField] private int steps = 0;
-	[SerializeField] GameObject[] Environments = new GameObject[34];
+	[SerializeField] GameObject[] Environments = new GameObject[5];
+	[SerializeField] GameObject endE;
 	[SerializeField] GameObject beginArea, area, door, noDoor;
 	private GameObject[] path;
 	[SerializeField] private float locationX = 0, locationY = 0, locationZ = 0;
 	[SerializeField] private float boundryToNegativeX, boundryToNegativeZ, boundryToPositiveX, boundryToPositiveZ;
+		
+	private Room[] roomList;
 
 	private float B_NegativeX, B_NegativeZ, B_PositiveX, B_PositiveZ;
 	float currentX, currentZ;
@@ -51,19 +54,38 @@ public class mapGen : MonoBehaviour
 		Debug.Log("what");
 		path[0] = Instantiate(beginArea, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
 		path = genMap(path);
-		GenDoors(path, new string[] { "Door1", "door2", "door3", "door4", "door5", "door6", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1" });
+		roomList = GenDoors(path, new string[] { "Door1", "door2", "door3", "door4", "door5", "door6", "door2", "Door1", "door2", "Door1", "door2", "Door1", "door2", "Door1" });
 		GenEnvironments(RandomizeArray(Environments, new System.Random()), path);
 	}
 
-	private void GenEnvironments(GameObject[] gameObjects, GameObject[] path)
+	private void GenEnvironments(GameObject[] EnvArray, GameObject[] path)
 	{
-		for (int i = 0; i < path.Length; i++)
+		int temp = 0;
+		Room lastRoom = roomList[roomList.Length - 1];
+		for (int i = 0, j = EnvArray.Length; i < j; i++)
 		{
-			Instantiate(gameObjects[i], path[i].transform);
+			Instantiate(EnvArray[i], path[i].transform);
+			temp++;
 		}
+		if (lastRoom.doorEast)
+		{
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+		}
+		else if (lastRoom.doorSouth)
+		{
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+		}
+		else if (lastRoom.doorWest)
+		{
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+		}
+		else if (lastRoom.doorEast)
+		{
+			Instantiate(endE, new Vector3(lastRoom.roomObject.transform.position.x, lastRoom.roomObject.transform.position.y, lastRoom.roomObject.transform.position.z), Quaternion.Euler(0, 0, 0));
+		
+		}
+		//Instantiate(endE, path[temp].transform);
 	}
-
-	
 
 	internal static T[] RandomizeArray<T>(T[] array, System.Random rand)
 	{
@@ -71,7 +93,7 @@ public class mapGen : MonoBehaviour
 		List<T> result = new List<T>();
 
 		while (options.Count > 0)
-		{
+		{ 
 			int i = rand.Next(options.Count);
 
 			result.Add(options[i]);
@@ -81,7 +103,7 @@ public class mapGen : MonoBehaviour
 		return result.ToArray();
 	}
 
-	private GameObject[] GenDoors(GameObject[] path, string[] tags)
+	private Room[] GenDoors(GameObject[] path, string[] tags)
 	{
 		Room[] rooms = new Room[path.Length];
 		for (int i = 0; i < rooms.Length; i++)
@@ -198,10 +220,11 @@ public class mapGen : MonoBehaviour
 		}
 
 
-		return listOfDoorsToInstantiate.Where(i => i != null)
+		listOfDoorsToInstantiate.Where(i => i != null)
 			.Select(i => DoorModelToGameObject(i))
 			.ToArray();
 
+		return rooms;
 
 
 	}
@@ -212,7 +235,7 @@ public class mapGen : MonoBehaviour
 		obj.transform.position = model.position;
 		obj.transform.rotation = model.rot;
 		obj.tag = model.isDoor ? model.tag : "Untagged";
-		//obj.transform.localScale = new Vector3(3, 3, 3);
+		//obj.transform.localScale = new Vector3(3, 3, 3); 
 
 		return obj;
 	}
