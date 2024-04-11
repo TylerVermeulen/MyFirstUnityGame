@@ -49,7 +49,7 @@ public class mapGen : MonoBehaviour
 	string canMake = "true";
 	void Start()
 	{
-		UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+		//UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
 		path = new GameObject[steps];
 		Debug.Log("what");
 		path[0] = Instantiate(beginArea, new Vector3(locationX, locationY, locationZ), Quaternion.identity);
@@ -206,10 +206,10 @@ public class mapGen : MonoBehaviour
 		//null the right duplicates
 		for (int i = 0, k = listOfDoorsToInstantiate.Count; i < k; i++)
 		{
-			//Debug.Log($"remove  duplicates {i}");
+
 			for (int j = 1 + i; j != listOfDoorsToInstantiate.Count; j++)
 			{
-				//Debug.Log($"remove  duplicates {j}");
+
 				if (listOfDoorsToInstantiate[i] != null && listOfDoorsToInstantiate[j] != null)
 				{
 					if (listOfDoorsToInstantiate[i].position == listOfDoorsToInstantiate[j].position)
@@ -247,12 +247,9 @@ public class mapGen : MonoBehaviour
 	private GameObject[] genMap(GameObject[] path)
 	{
 
-		//for (int i = 0; i < 88; i++)
-		{
-			//Debug.Log(Random.Range(0, 4));
-		}
-		Random.seed = 1;
-		//Debug.Log(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+		//Random.seed = 1;
+
 
 		diameter = (float)(area.transform.localScale.x * 0.95);
 
@@ -300,7 +297,6 @@ public class mapGen : MonoBehaviour
 							(locationX == path[j].transform.position.x &&
 							locationZ == path[j].transform.position.z))
 						{
-							// Debug.Log("aaaaaaaaaaaa");
 							canMake = "false";
 						}
 					}
@@ -312,7 +308,7 @@ public class mapGen : MonoBehaviour
 					path[i] = Instantiate(area, new Vector3(currentX = locationX, locationY, currentZ = locationZ), Quaternion.identity);
 					break;
 				case "outBounds":
-					Debug.Log("aaaaaaaa");
+					
 					locationX = currentX;
 					locationZ = currentZ;
 					i--;
