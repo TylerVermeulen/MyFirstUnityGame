@@ -249,7 +249,8 @@ public class mapGen : MonoBehaviour
 
 
 		//Random.seed = 1;
-
+		currentX = locationX;
+		currentZ = locationZ;
 
 		diameter = (float)(area.transform.localScale.x * 0.95);
 
